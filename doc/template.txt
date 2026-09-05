@@ -1,0 +1,8 @@
+*template.txt*                                  Last change: 2026 September 05
+
+==============================================================================
+`TEMPLATE.NVIM`                                       *template-template.nvim*
+
+
+
+vim:tw=78:ts=8:ft=help:norl:
