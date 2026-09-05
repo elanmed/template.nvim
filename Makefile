@@ -19,6 +19,7 @@ format:
 	stylua .
 
 docs:
+	mkdir -p ./doc
 	./deps/ts-vimdoc.nvim/scripts/docgen.sh README.md doc/template.txt template
 	nvim --headless -c "helptags doc/" -c "qa"
 

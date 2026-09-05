@@ -12,4 +12,8 @@ local T = new_set {
   },
 }
 
+T["true"] = function()
+  MiniTest.expect.equality(true, true)
+end
+
 return T
