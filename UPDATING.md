@@ -29,7 +29,6 @@ plugin's counterpart (or note that it has none):
 | `tests/test_e2e.lua`                    | mini.test suite driving a child Neovim                     | `tests/`                         |
 | `scripts/minimal_init.lua`              | Deterministic test init (rtp + mini.test)                  | wherever tests bootstrap         |
 | `Makefile`                              | `test`, `lint`, `format`, `docs`, `dev`, `clean`, `deploy` | Makefile / task runner           |
-| `.luarc.json`                           | lua-language-server lint gate                              | repo root                        |
 | `stylua.toml`, `.styluaignore`          | Formatting config                                          | repo root                        |
 | `scripts/pre-push` + `install_hooks.sh` | Runs all checks on push of master                          | hooks / CI config                |
 | `deps/*` (git submodules)               | Pinned dev-only deps: mini.test, ts-vimdoc.nvim            | deps/, CI, plugin manager config |
@@ -63,8 +62,7 @@ A different mechanism can still satisfy a principle — keep it and say why.
   docs, enforced on push (hook or CI). This is the model's backbone.
 - **Testing**: mini.test with a child Neovim process, a deterministic
   `minimal_init`, tests under `tests/`.
-- **Lint/format config**: `.luarc.json` (with `MiniTest` as a global,
-  submodule-aware workspace), `stylua.toml` with `.styluaignore` covering deps.
+- **Format config**: `stylua.toml` with `.styluaignore` covering deps.
 - **Docs pipeline**: help file generated from `README.md` (ts-vimdoc), with
   generated `tags` ignored but `doc/tags` committed.
 - **Dependency hygiene**: dev-only deps as pinned git submodules, never mixed
@@ -75,9 +73,10 @@ Skip from the model: the stub feature code (`setup()` is intentionally empty),
 the `template` naming, `LICENSE`, and README prose. The model demonstrates
 _shape_, not features.
 
-Remove from your plugin: a stale `.editorconfig` at the repo root — plugins
-frequently carry one, but the model standardizes on `.luarc.json` +
-`stylua.toml` instead. Delete it (leave vendored `deps/` untouched).
+Remove from your plugin: stale `.editorconfig` and `.luarc.json` files at the
+repo root — plugins frequently carry them, but neither should be necessary
+(`stylua.toml` handles formatting; keep the lint gate configured without
+a checked-in `.luarc.json`). Delete them (leave vendored `deps/` untouched).
 
 ## 4. How to update
 
@@ -102,7 +101,7 @@ frequently carry one, but the model standardizes on `.luarc.json` +
 - [ ] `make deploy` (or your plugin's single gate) passes
 - [ ] Every row of the section-2 table has an explicit classification with a
       one-sentence justification
-- [ ] No `.editorconfig` at the repo root
+- [ ] No `.editorconfig` or `.luarc.json` at the repo root
 - [ ] Help docs generate under your plugin's name and `:h <name>` resolves
 - [ ] Lint and format run clean with zero manual formatting
 - [ ] Tests run in a child Neovim from a clean clone
