@@ -26,3 +26,9 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 ```
+
+## Global `vim.g.ff.*` variables
+
+- Global plugin config should passed through `vim.g.ff.*`
+- Function options still passed through the function
+- Global state within the plugin can live in local variables declared at the top scope
