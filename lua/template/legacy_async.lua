@@ -64,7 +64,7 @@ end
 
 --- @generic T
 --- @param promise Promise<T>
---- @return T
+--- @return T ...
 M.await = function(promise)
   local thread = coroutine.running()
   assert(
@@ -88,14 +88,14 @@ M.await = function(promise)
   return unpack(results, 2)
 end
 
---- @class ThrottledIteratorOpts<ControlVar>
+--- @class LegacyThrottledIteratorOpts<ControlVar>
 --- @field threshold_ns? number The minimum time in nanoseconds between yields to the main loop. Defaults to 10ms.
 --- @field should_cancel? fun():boolean Called before each iteration; return true to stop early. Defaults to always returning false.
 --- @field on_iteration fun(control_var: ControlVar, ...):nil Called for each item with the control variable and the iterator values.
 
 --- @generic InvariantState, ControlVar
 --- @param iterator_factory fun(): ((fun(invariant_state: InvariantState, control_var: ControlVar):ControlVar), InvariantState?, ControlVar?)
---- @param opts ThrottledIteratorOpts<ControlVar>
+--- @param opts LegacyThrottledIteratorOpts<ControlVar>
 --- @return Promise<nil>
 M.throttled_iterator = function(iterator_factory, opts)
   local async_fn = M.make_async(function()
