@@ -1,4 +1,4 @@
-.PHONY: dev clean test lint format docs
+.PHONY: dev clean test lint format docs update-submodules
 
 dev:
 	mkdir -p ~/.local/share/nvim/site/pack/dev/start/template.nvim
@@ -19,9 +19,12 @@ format:
 	# https://github.com/JohnnyMorganz/StyLua#usage
 	stylua .
 
+update-submodules:
+	git submodule update --init --recursive --remote
+
 docs:
 	mkdir -p ./doc
 	./deps/ts-vimdoc.nvim/scripts/docgen.sh README.md doc/template.txt template
 	nvim --headless -c "helptags doc/" -c "qa"
 
-deploy: test lint format docs
+deploy: update-submodules test lint format docs
