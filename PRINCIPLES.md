@@ -79,11 +79,13 @@ local ui_input_async = vim.async.wrap(2, vim.ui.input)
 Schedule callbacks in `vim.async.run` and raise errors from the async task:
 
 ```lua
+--- @param callback fun(...: any): any
+--- @return fun(...: any): nil
 local cb_async = function(callback)
   return function(...)
     local arguments = { ... }
     vim.async
-      .run(function()
+      .run("cb_async_task", function()
         callback(unpack(arguments))
       end)
       :raise_on_error()
@@ -97,4 +99,40 @@ Use `vim.async.sleep(0)` to ensure execution on the main loop:
 local ensure_main_loop = function()
   vim.async.sleep(0)
 end
+```
+
+## Name inner callback arguments with an `_arg` suffix
+
+When callback parameters shadow or repeat names from an enclosing function, add the `_arg` suffix and use those names inside the callback:
+
+```lua
+--- @param fn_name string
+--- @param content string
+local function mock_run_diff_cmd(fn_name, content)
+  child.lua_func(
+    --- @param fn_name_arg string
+    --- @param content_arg string
+    function(fn_name_arg, content_arg)
+      -- Use fn_name_arg and content_arg inside this callback.
+    end
+  )
+end
+```
+
+## Type async functions and awaited values
+
+Annotate values returned from `vim.async.run` and use a cast when the awaited result's type cannot be inferred:
+
+```lua
+--- @return string?
+return vim.async.run(function()
+  local result = get_async_result()
+  if not result then
+    return nil
+  end
+
+  return result
+end)
+
+local value = vim.async.await(start_async_operation()) --[[@as string?]]
 ```
