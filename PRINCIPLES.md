@@ -6,7 +6,7 @@ Consult `AGENTS.md` for repository-specific workflow requirements. It points to 
 
 ## Write READMEs like the template README
 
-An ideal README matches the template README's structure, clarity, and level of detail. Include these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate:
+An ideal README matches the template README's structure, clarity, and level of detail. Include these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate and rounding LOC counts to the nearest 100:
 
 - 1 source file (5 LOC), 1 test file (20 LOC), no runtime dependencies
 
