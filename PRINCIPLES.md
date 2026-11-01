@@ -1,5 +1,11 @@
 # Misc Principles
 
+## Write READMEs like the template README
+
+An ideal README matches the template README's structure, clarity, and level of detail. Include these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate:
+
+- 1 source file (5 LOC), 1 test file (20 LOC), no runtime dependencies
+
 ## Expose window/buffer options via a user event
 
 ```lua
@@ -46,6 +52,10 @@ local notify = function(level, msg, ...)
   vim.notify(msg:format(...), level)
 end
 ```
+
+## Notify before early returns
+
+Every early return should call `notify`, since early returns indicate an unexpected issue. Prefer over-notifying; noisy notifications can be removed later.
 
 ## Use a typed `nonnil` helper
 
