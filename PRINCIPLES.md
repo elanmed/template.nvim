@@ -1,5 +1,9 @@
 # Misc Principles
 
+## Follow repository instructions
+
+Consult `AGENTS.md` for repository-specific workflow requirements. It points to the `Makefile` and requires running `make deploy` after changes.
+
 ## Write READMEs like the template README
 
 An ideal README matches the template README's structure, clarity, and level of detail. Include these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate:
