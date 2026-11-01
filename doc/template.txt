@@ -1,8 +1,66 @@
-*template.txt*                                  Last change: 2026 September 05
+*template.txt*                                   Last change: 2026 November 01
+
+==============================================================================
+Table of Contents                                 *template-table-of-contents*
+
+Features ................................................. |template-features|
+Example config ..................................... |template-example-config|
+Plug remaps ........................................... |template-plug-remaps|
+API ........................................................... |template-api|
+`require("template").setup()` ......... |template-require("template").setup()|
+Autocommand events ............................. |template-autocommand-events|
 
 ==============================================================================
 `TEMPLATE.NVIM`                                       *template-template.nvim*
 
+
+A minimal Neovim plugin template with an empty setup entry point.
+
+
+------------------------------------------------------------------------------
+FEATURES                                                   *template-features*
+
+
+- 1 source file (5 LOC), 1 test file (20 LOC), no runtime dependencies
+- No plugin behavior yet: `setup()` is a placeholder for implementation
+- A minimal `mini.test` test scaffold and Make targets for testing, linting,
+  formatting, and generating help documentation
+
+------------------------------------------------------------------------------
+EXAMPLE CONFIG                                       *template-example-config*
+
+
+The plugin loader calls `setup()` automatically when the plugin is loaded. The
+setup function is an empty scaffold:
+
+>lua
+    require("template").setup()
+<
+
+------------------------------------------------------------------------------
+PLUG REMAPS                                             *template-plug-remaps*
+
+
+This template defines no `<Plug>` mappings.
+
+
+------------------------------------------------------------------------------
+API                                                             *template-api*
+
+
+
+                                                                              
+`REQUIRE("TEMPLATE").SETUP()`           *template-require("template").setup()*
+
+Placeholder initialization function. Add plugin configuration and
+initialization logic to `lua/template/init.lua`.
+
+
+------------------------------------------------------------------------------
+AUTOCOMMAND EVENTS                               *template-autocommand-events*
+
+
+This template does not emit any autocommand events.
 
 
 vim:tw=78:ts=8:ft=help:norl:

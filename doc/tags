@@ -1,2 +1,9 @@
+template-api	template.txt	/*template-api*
+template-autocommand-events	template.txt	/*template-autocommand-events*
+template-example-config	template.txt	/*template-example-config*
+template-features	template.txt	/*template-features*
+template-plug-remaps	template.txt	/*template-plug-remaps*
+template-require("template").setup()	template.txt	/*template-require("template").setup()*
+template-table-of-contents	template.txt	/*template-table-of-contents*
 template-template.nvim	template.txt	/*template-template.nvim*
 template.txt	template.txt	/*template.txt*
