@@ -4,9 +4,9 @@
 
 Consult `AGENTS.md` for repository-specific workflow requirements. It points to the `Makefile` and requires running `make deploy` after changes.
 
-## Write READMEs like the template README
+## Make minimal changes to existing READMEs
 
-An ideal README matches the template README's structure, clarity, and level of detail. Include these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate and rounding LOC counts to the nearest 100:
+When updating an existing README, preserve its structure, wording, and style; make only targeted changes needed to keep it accurate. Do not rewrite it or add sections merely to match the template README. For a new README, use the template README's structure and level of detail, with these sections: Features, Example config, Plug remaps, API, and Autocommand events. The Features section should include this inventory line, updating the counts as appropriate and rounding LOC counts to the nearest 100:
 
 - 1 source file (5 LOC), 1 test file (20 LOC), no runtime dependencies
 
