@@ -59,7 +59,7 @@ end
 
 ## Notify before early returns
 
-Every early return should call `notify`, since early returns indicate an unexpected issue. Prefer over-notifying; noisy notifications can be removed later.
+Call `notify` before early returns that indicate an unexpected issue, such as a required value being `nil` or a command result having `out.code ~= 0`. Do not notify for every early return: expected control flow, such as optional values being absent or normal cancellation, should return quietly.
 
 ## Use a typed `nonnil` helper
 
